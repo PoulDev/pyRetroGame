@@ -63,11 +63,17 @@ class Game:
         return rawMap
     
     def spawn(self, obj):
+        if type(obj) == list:
+            for o in obj:
+                self.spawn(o)
+            return
         self.objects.append(obj)
 
     def despawn(self, obj):
         self.objects.remove(obj)
 
+    def despawnAll(self):
+        self.objects = []
 
     def inputHandler(self, key):
         def inner(func):

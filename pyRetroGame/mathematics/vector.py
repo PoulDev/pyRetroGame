@@ -18,3 +18,6 @@ class Vector2:
         self.x -= vectorobj.x
         self.y -= vectorobj.y
         return self
+
+    def __list__(self):
+        return [self.x, self.y]

@@ -44,7 +44,11 @@ class gameEntity:
 
     def collisionHandler(self, collidedGameObject):
         def inner(func):
-            self.collisionHandlers[collidedGameObject] = func
+            if type(collidedGameObject) == list:
+                for o in collidedGameObject:
+                    self.collisionHandlers[o] = func
+            else:
+                self.collisionHandlers[collidedGameObject] = func
             return func
         return inner
     
@@ -93,3 +97,8 @@ class gameEntity:
             return
         
         self.position = newPos
+
+class gameScene:
+    def __init__(self, objects = []):
+        self.objects = objects
+
