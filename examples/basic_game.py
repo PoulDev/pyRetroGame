@@ -44,6 +44,10 @@ def movement(key):
     
     player.move(direction) # Move the player at X: playerPosition.x + direction.x; Y: playerPosition.y + direction.y
 
+@game.inputHandler('q')
+def quit():
+    game.quit()
+
 @player.collisionHandler(wall)
 def onPlayerCollision():
     game.printAnimatedText(f'Welcome to PyRetroGame!') # Print a message that has a duration of 2 seconds
