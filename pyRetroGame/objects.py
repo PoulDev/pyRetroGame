@@ -1,5 +1,4 @@
 import string
-from turtle import position
 from .mathematics.vector import Vector2
 import threading
 
