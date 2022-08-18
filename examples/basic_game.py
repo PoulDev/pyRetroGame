@@ -2,7 +2,7 @@ import pyRetroGame
 from pyRetroGame.mathematics.vector import Vector2
 from pyRetroGame.assets import *
 
-# Define all the game objects
+# Define all the game objects 
 class Background:
     def __str__(self): return TextAssets.FilledBlock
 
