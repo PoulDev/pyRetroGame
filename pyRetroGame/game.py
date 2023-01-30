@@ -28,7 +28,9 @@ class Game:
         self.stdscr = curses.initscr()
         #self.__set_pairs__()
 
-        threading.Thread(target=self.__key_handler__).start()
+        self.keyboardThread = threading.Thread(target=self.__key_handler__)
+        self.keyboardThread.setDaemon(True)
+        self.keyboardThread.start()
         self.__update_screen__()
 
     def quit(self):
@@ -116,7 +118,9 @@ class Game:
             num = 0
             self.stdscr.clear()
             for line in self.getMap().splitlines():
-                self.stdscr.addstr(num, 0, line.center(terminalSize().x))
+                try:
+                    self.stdscr.addstr(num, 0, line.center(terminalSize().x))
+                except: continue
                 num += 1
 
             self.stdscr.refresh()
